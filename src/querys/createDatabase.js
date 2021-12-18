@@ -1,4 +1,4 @@
-const checkIfExistDatabase = require("./validations/checkIfExistDataBase")
+const checkIfExistDatabase = require("../validations/checkIfExistDataBase")
 const databaseErrors = require("../errors/database")
 const fs = require("fs")
 const path = require("path")

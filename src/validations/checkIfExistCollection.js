@@ -5,7 +5,7 @@ const checkIfExistDataBase = require("./checkIfExistDataBase")
 const checkIfExistCollection = (databaseName, collectionName) => {
     if (!checkIfExistDataBase(databaseName)) return false
 
-    const checkout = fs.existsSync(path.join(__dirname, `../../../databases/${databaseName}/${collectionName}.json`))
+    const checkout = fs.existsSync(path.join(__dirname, `../../databases/${databaseName}/${collectionName}.json`))
 
     return checkout
 }
