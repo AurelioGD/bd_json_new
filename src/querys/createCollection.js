@@ -1,4 +1,4 @@
-const fs = require("fs")
+const createCollectionFile = require("./../process/collection/createCollectionFile")
 const collectionErrors = require("../errors/collection")
 const { checkIfExistDataBase, checkIfExistCollection } = require("../validations")
 const { generateDefaultDataCollection } = require("../utils/defaultDataGenerators")
@@ -10,7 +10,7 @@ const createCollection = (databaseName, collectionName) => {
 
     if (checkIfExistCollection(databaseName, collectionName)) return console.log(collectionErrors.alreadyExist)
 
-    fs.writeFileSync(generatePathAbsoluteDbPlusColl(databaseName, collectionName), generateDefaultDataCollection(collectionName));
+    createCollectionFile(databaseName, collectionName)
 }
 
 module.exports = createCollection
