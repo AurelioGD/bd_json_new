@@ -1,5 +1,8 @@
-const { createCollection, createDatabase } = require("./querys")
+const { createCollection, createDatabase, addDoc } = require("./querys")
 const main = () => {
-    createCollection("xd", "usuariosdeXD")
+    addDoc("xd", "pan", {
+        id: 1,
+        name: "concha"
+    })
 }
 main()

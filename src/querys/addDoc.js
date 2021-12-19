@@ -1,8 +1,11 @@
 const databaseErrors = require("../errors/database")
 const collectionErrors = require("../errors/collection")
-const checkIfExistDataBase = require("../validations/checkIfExistDataBase")
-const checkIfExistCollection = require("../validations/checkIfExistCollection")
+const { checkIfExistDataBase, checkIfExistCollection } = require("../validations")
 const { generatePathRelativeDbPlusColl } = require("../utils/pathGenerators")
+
+const embedDoc = require("../utils/embedDoc")
+const overwriteCollectionFile = require("../process/collection/overwriteCollectionFile")
+
 const addDoc = (databaseName, collectionName, newDoc) => {
     if (!checkIfExistDataBase(databaseName)) return console.log(databaseErrors.notExist)
 
@@ -10,8 +13,9 @@ const addDoc = (databaseName, collectionName, newDoc) => {
 
     const collection = require(generatePathRelativeDbPlusColl(databaseName, collectionName))
 
+    const newCollection = embedDoc(collection, newDoc)
 
-
+    overwriteCollectionFile(databaseName, collectionName, newCollection)
 }
 
 module.exports = addDoc
