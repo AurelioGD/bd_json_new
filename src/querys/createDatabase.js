@@ -1,14 +1,14 @@
 const checkIfExistDatabase = require("../validations/checkIfExistDataBase")
 const databaseErrors = require("../errors/database")
-const fs = require("fs")
-const path = require("path")
+const createCollectionConfigFile = require("../process/collection/createCollectionConfigFile")
+const createDbFolder = require("../process/database/createDbFolder")
 
 const createDatabase = (databaseName) => {
     if (checkIfExistDatabase(databaseName)) return console.log(databaseErrors.alreadyExist)
 
-    fs.mkdirSync(path.join(__dirname, `../../databases/${databaseName}`))
+    createDbFolder(databaseName)
 
-    fs.writeFileSync(path.join(__dirname, `../../databases/${databaseName}/config.json`), `{\n    "name":"${databaseName}"\n}`);
+    createCollectionConfigFile(databaseName);
 }
 
 module.exports = createDatabase
