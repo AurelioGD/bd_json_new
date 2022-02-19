@@ -8,9 +8,12 @@ const generatePathAbsoluteDb = (databaseName) => path.join(__dirname, `../../dat
 
 const generatePathAbsoluteGetConfigFile = (databaseName) => path.join(__dirname, `../../databases/${databaseName}/config.json`)
 
+const generatePathAbsoluteFolderDatabases = () => path.join(__dirname, "../../databases")
+
 module.exports = {
     generatePathAbsoluteDbPlusColl,
     generatePathRelativeDbPlusColl,
     generatePathAbsoluteDb,
-    generatePathAbsoluteGetConfigFile
+    generatePathAbsoluteGetConfigFile,
+    generatePathAbsoluteFolderDatabases
 }
